@@ -1,4 +1,4 @@
-package com.project.KwnagJinProJect;
+package com.project.KwangJinProJect;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
