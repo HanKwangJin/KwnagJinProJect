@@ -16,8 +16,9 @@ import javax.persistence.PostUpdate;
         private final KwangJinService kwangJinService;
 
         @PostMapping("/api/members")
-        public Long save(@RequestBody KwangJinSaveRequestDto kwangJinSaveRequestDto) {
-            return kwangJinService.save(kwangJinSaveRequestDto);
+        public String save(@RequestBody KwangJinSaveRequestDto kwangJinSaveRequestDto) {
+            kwangJinService.save(kwangJinSaveRequestDto);
+                return "kwangJinHome";
         }
         @PutMapping("/api/members/{id}")
         public Long update(@PathVariable Long id, @RequestBody KwangJinUpdateRequestDto kwangJinUpdateRequestDto){
