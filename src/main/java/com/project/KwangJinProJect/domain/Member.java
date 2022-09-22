@@ -19,6 +19,10 @@ public class Member {
     private String password;
     private String age;
 
+    public void update(String name,String password){
+        this.name=name;
+        this.password=password;
+    }
     @Builder
     public Member(String name, String password, String age) {
         this.name = name;
