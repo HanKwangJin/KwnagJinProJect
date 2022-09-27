@@ -18,4 +18,8 @@ public class JinController {
     public String list(){
          return "kwangJinList";
     }
+    @GetMapping("kwangJin/join")
+    public String join(){
+        return "kwangJinjoin";
+    }
 }

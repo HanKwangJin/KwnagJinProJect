@@ -1,9 +1,8 @@
 package com.project.KwangJinProJect.domain.test;
 
-import com.project.KwangJinProJect.domain.KwangJinRepository;
+import com.project.KwangJinProJect.repository.KwangJinRepository;
 import com.project.KwangJinProJect.domain.Member;
 import com.project.KwangJinProJect.web.dto.KwangJinSaveRequestDto;
-import org.assertj.core.internal.bytebuddy.asm.Advice;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;

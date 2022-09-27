@@ -1,25 +1,44 @@
 package com.project.KwangJinProJect.controller;
 
+import com.project.KwangJinProJect.domain.Member;
+import com.project.KwangJinProJect.repository.KwangJinRepository;
 import com.project.KwangJinProJect.service.KwangJinService;
 import com.project.KwangJinProJect.web.dto.KwangJinResponseDto;
 import com.project.KwangJinProJect.web.dto.KwangJinSaveRequestDto;
 import com.project.KwangJinProJect.web.dto.KwangJinUpdateRequestDto;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.PostUpdate;
+import java.util.List;
+import java.util.Optional;
 
-@RequiredArgsConstructor
-    @RestController
+
+@Controller
+@Slf4j
     public class KwangJinApiController {
 
-        private final KwangJinService kwangJinService;
+    @Autowired
+        private KwangJinService kwangJinService;
+    @Autowired
+        private KwangJinRepository kwangJinRepository;
 
-        @PostMapping("/api/members")
-        public String save(@RequestBody KwangJinSaveRequestDto kwangJinSaveRequestDto) {
+    @PostMapping("/api/members")
+    public String save(KwangJinSaveRequestDto kwangJinSaveRequestDto) {
+        log.info("회원 정보 : {}", kwangJinSaveRequestDto);
             kwangJinService.save(kwangJinSaveRequestDto);
-                return "kwangJinHome";
-        }
+        return "redirect:/";
+    }
+
+    @GetMapping("/api/list")
+    public String list(Model model){
+        List<Member> member =kwangJinService.findAll();
+        model.addAttribute("member",member);
+        return "kwangJinList";
+    }
+
         @PutMapping("/api/members/{id}")
         public Long update(@PathVariable Long id, @RequestBody KwangJinUpdateRequestDto kwangJinUpdateRequestDto){
             return kwangJinService.update(id,kwangJinUpdateRequestDto);
@@ -28,6 +47,15 @@ import javax.persistence.PostUpdate;
         public KwangJinResponseDto findById(@PathVariable Long id){
             return kwangJinService.findById(id);
         }
+
+        @PostMapping("/api/join")
+        public  String loginName(Member member){
+        if (kwangJinService.login(member)){
+            return "redirect:/";
+        }
+        return "kwangJinJoin";
+}
+
 
 
 }

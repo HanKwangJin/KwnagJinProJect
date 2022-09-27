@@ -1,6 +1,6 @@
 package com.project.KwangJinProJect.domain.test;
 
-import com.project.KwangJinProJect.domain.KwangJinRepository;
+import com.project.KwangJinProJect.repository.KwangJinRepository;
 import com.project.KwangJinProJect.domain.Member;
 import org.junit.After;
 import org.junit.Test;

@@ -2,10 +2,11 @@ package com.project.KwangJinProJect.web.dto;
 
 import com.project.KwangJinProJect.domain.Member;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
+@Data
 @NoArgsConstructor
 public class KwangJinSaveRequestDto {
     private String name;
