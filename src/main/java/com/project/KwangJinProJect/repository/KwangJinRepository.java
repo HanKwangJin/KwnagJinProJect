@@ -5,9 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface KwangJinRepository extends JpaRepository<Member,Long> {
+public interface KwangJinRepository extends JpaRepository<Member,String> {
     Optional<Member> findById(Long id);
     Member findByname(String name);
-    Member getPassword(String password);
+
+//    Member jinfindBypassword(String password);
 }
 

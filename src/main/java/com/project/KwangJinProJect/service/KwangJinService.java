@@ -6,6 +6,8 @@ import com.project.KwangJinProJect.web.dto.KwangJinResponseDto;
 import com.project.KwangJinProJect.web.dto.KwangJinSaveRequestDto;
 import com.project.KwangJinProJect.web.dto.KwangJinUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,10 +16,11 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class KwangJinService {
     private final KwangJinRepository kwangJinRepository;
-    private final KwangJinService kwangJinService;
-    private final KwangJinResponseDto kwangJinResponseDto;
+
+
     @Transactional
     public Long save(KwangJinSaveRequestDto kwangJinSaveRequestDto) {
         return kwangJinRepository.save(kwangJinSaveRequestDto.toEntity()).getId();
@@ -37,6 +40,7 @@ public class KwangJinService {
     public List<Member> findAll(){
         return kwangJinRepository.findAll();
     }
+
     public boolean login(Member member){
         Member findMember=kwangJinRepository.findByname(member.getName());
         if (findMember == null){

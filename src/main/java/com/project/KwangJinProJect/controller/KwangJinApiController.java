@@ -39,22 +39,28 @@ import java.util.Optional;
         return "kwangJinList";
     }
 
-        @PutMapping("/api/members/{id}")
-        public Long update(@PathVariable Long id, @RequestBody KwangJinUpdateRequestDto kwangJinUpdateRequestDto){
-            return kwangJinService.update(id,kwangJinUpdateRequestDto);
-        }
-        @GetMapping("/api/members/{id}")
-        public KwangJinResponseDto findById(@PathVariable Long id){
-            return kwangJinService.findById(id);
-        }
+//        @PutMapping("/api/members/{id}")
+//        public Long update(@PathVariable Long id, @RequestBody KwangJinUpdateRequestDto kwangJinUpdateRequestDto){
+//            return kwangJinService.update(id,kwangJinUpdateRequestDto);
+//        }
+//        @GetMapping("/api/members/{id}")
+//        public KwangJinResponseDto findById(@PathVariable Long id){
+//            return kwangJinService.findById(id);
+//        }
+
+//    @GetMapping("/api/join")
+//    public  String login(){
+//        return "kwangJinJoin";
+//    }
 
         @PostMapping("/api/join")
-        public  String loginName(Member member){
+        public  String login(Member member){
         if (kwangJinService.login(member)){
+            log.info("멤버 : {}", member);
+            return "kwangJinJoin";
+        }
             return "redirect:/";
         }
-        return "kwangJinJoin";
-}
 
 
 
