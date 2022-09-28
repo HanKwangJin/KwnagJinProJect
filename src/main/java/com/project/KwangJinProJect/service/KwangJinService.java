@@ -49,6 +49,7 @@ public class KwangJinService {
         if (!findMember.getPassword().equals(member.getPassword())){
             return false;
         }
+
         return true;
     }
 }

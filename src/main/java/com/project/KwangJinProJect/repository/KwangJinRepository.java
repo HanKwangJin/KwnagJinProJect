@@ -8,7 +8,5 @@ import java.util.Optional;
 public interface KwangJinRepository extends JpaRepository<Member,String> {
     Optional<Member> findById(Long id);
     Member findByname(String name);
-
-//    Member jinfindBypassword(String password);
 }
 
