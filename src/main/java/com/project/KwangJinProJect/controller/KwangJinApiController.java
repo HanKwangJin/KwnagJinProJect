@@ -39,6 +39,14 @@ import java.util.Optional;
         return "kwangJinList";
     }
 
+    @PostMapping("/api/join")
+    public  String login(Member member){
+        if (kwangJinService.login(member)){
+            log.info("멤버 : {}", member);
+            return "kwangJinJoin";
+        }
+        return "redirect:/";
+    }
 //        @PutMapping("/api/members/{id}")
 //        public Long update(@PathVariable Long id, @RequestBody KwangJinUpdateRequestDto kwangJinUpdateRequestDto){
 //            return kwangJinService.update(id,kwangJinUpdateRequestDto);
@@ -46,21 +54,13 @@ import java.util.Optional;
 //        @GetMapping("/api/members/{id}")
 //        public KwangJinResponseDto findById(@PathVariable Long id){
 //            return kwangJinService.findById(id);
-//        }
 
+//        }
 //    @GetMapping("/api/join")
 //    public  String login(){
 //        return "kwangJinJoin";
-//    }
 
-        @PostMapping("/api/join")
-        public  String login(Member member){
-        if (kwangJinService.login(member)){
-            log.info("멤버 : {}", member);
-            return "kwangJinJoin";
-        }
-            return "redirect:/";
-        }
+//    }
 
 
 
