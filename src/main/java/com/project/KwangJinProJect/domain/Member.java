@@ -12,17 +12,17 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String username;
     private String password;
     private String age;
 
-    public void update(String name,String password){
-        this.name=name;
+    public void update(String username,String password){
+        this.username=username;
         this.password=password;
     }
     @Builder
-    public Member(String name, String password, String age) {
-        this.name = name;
+    public Member(String username, String password, String age) {
+        this.username = username;
         this.password = password;
         this.age = age;
     }

@@ -9,21 +9,21 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class KwangJinSaveRequestDto {
-    private String name;
+    private String username;
     private String password;
     private String age;
 
     @Builder
 
-    public KwangJinSaveRequestDto(String name, String password, String age) {
-            this.name = name;
+    public KwangJinSaveRequestDto(String username, String password, String age) {
+            this.username = username;
             this.password = password;
             this.age = age;
         }
 
         public Member toEntity(){
         return Member.builder()
-                .name(name)
+                .username(username)
                 .password(password)
                 .age(age)
                 .build();

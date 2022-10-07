@@ -29,7 +29,7 @@ public class KwangJinService {
     public Long update(Long id, KwangJinUpdateRequestDto kwangJinUpdateRequestDto){
         Member member=kwangJinRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다.id="+id));
-                member.update(kwangJinUpdateRequestDto.getName(), kwangJinUpdateRequestDto.getPassword());
+                member.update(kwangJinUpdateRequestDto.getUsername(), kwangJinUpdateRequestDto.getPassword());
                 return id;
     }
     public KwangJinResponseDto findById(Long id){
@@ -42,7 +42,7 @@ public class KwangJinService {
     }
 
     public boolean login(Member member){
-        Member findMember=kwangJinRepository.findByname(member.getName());
+        Member findMember=kwangJinRepository.findByUsername(member.getUsername());
         if (findMember == null){
             return false;
         }

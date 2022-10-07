@@ -6,9 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class JinController {
 
-    @GetMapping("/")
+
+//    @GetMapping("/loginPage")
+//    public String loginPage() {
+//        return "loginPage";
+//    }
+
+    @GetMapping({"", "/"})
     public String home(){
-        return "kwangJinHome";
+        return "index";
     }
     @GetMapping("kwangJin/signup")
     public String signUp(){

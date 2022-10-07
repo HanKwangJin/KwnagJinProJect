@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-<link rel="stylesheet" type="text/css" href="css/basic.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +7,26 @@
 </head>
 <body>
 <div class="wrap">
-    <form action="api/join" method="POST">
-    <div class="login">
-        <h1>Log-in</h1>
-        <div class="login_id">
-            <h4>Name</h4>
-            <input type="name" name="name" id="login_id" placeholder="Name">
-        </div>
-        <div class="login_pw">
-            <h4>Password</h4>
-            <input type="password" name="password" id="login_pw" placeholder="Password">
-        </div>
-        <div>
-            <a href="kwangJin/signup">회원 가입</a>
-            <a href="api/list">회원 목록</a>
-        </div>
-        <button>로긴</button>
-    </div>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <button type="submit">로그인</button>
+        <!--    <div class="login">-->
+        <!--        <h1>Log-in</h1>-->
+<!--        <div class="login_id">-->
+<!--            <h4>Name</h4>-->
+<!--            <input type="text" name="username" id="login_id" placeholder="Name">-->
+<!--        </div>-->
+<!--        <div class="login_pw">-->
+<!--            <h4>Password</h4>-->
+<!--            <input type="password" name="password" id="login_pw" placeholder="Password">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <a href="kwangJin/signup">회원 가입</a>-->
+<!--            <a href="api/list">회원 목록</a>-->
+<!--        </div>-->
+<!--        <button type="submit">로긴</button>-->
+<!--    </div>-->
     </form>
 </div>
 </body>

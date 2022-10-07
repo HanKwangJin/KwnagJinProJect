@@ -1,26 +1,58 @@
 package com.project.KwangJinProJect.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.project.KwangJinProJect.component.LoginFailHandler;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfiguration {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    KwangJinService kwangJinService;
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/h2-console/**");
+    }
 
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // 인가 정책 설정
         http
-                .authorizeRequests() // 요청에 대한 보안 검사 실행
-                .anyRequest().authenticated(); // 어떠한 요청에도 인증을 받도록 설정
+                .csrf().disable()
 
-        // 인증 정책 설정
-        http
-                .formLogin(); // formLogin인증 방식을 사용하도록 설정
+
+                .authorizeRequests()
+//                        .antMatchers("/admin/**").hasRole("ADMIN")
+//                        .antMatchers("/**").permitAll()
+                .anyRequest().permitAll()
+
+                .and()
+                        .formLogin()
+                        .loginPage("/loginPage")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/")
+                .failureHandler(loginFailHandler());
+//                        .failureUrl("/");
+
+//                .and()
+//                        .exceptionHandling().accessDeniedPage("/");
+//                .and()
+//                .logout()
+//                .logoutRequestMatcher()
+
+//                .usernameParameter("name")
+//                .passwordParameter("password")
+//                .loginProcessingUrl("api/join")
+
+
+    }
+    @Bean
+    public LoginFailHandler loginFailHandler() {
+        return new LoginFailHandler();
     }
 }

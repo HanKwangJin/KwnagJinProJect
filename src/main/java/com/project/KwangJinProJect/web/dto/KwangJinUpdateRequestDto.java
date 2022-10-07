@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class KwangJinUpdateRequestDto {
-    private String name;
+    private String username;
     private String password;
 
     @Builder
-    public KwangJinUpdateRequestDto(String name,String password){
-        this.name=name;
+    public KwangJinUpdateRequestDto(String username,String password){
+        this.username=username;
         this.password=password;
     }
 }
